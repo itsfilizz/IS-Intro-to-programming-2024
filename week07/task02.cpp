@@ -1,41 +1,48 @@
 #include <iostream>
 
+int number(int x)
+{
+    int originalNumber = x;
+
+    if (x % 2 == 0)
+    {
+        x -= 1;
+    }
+    else if (x % 2 != 0)
+    {
+        x -= 3;
+    }
+
+    if (x > 10)
+    {
+        x %= 10;
+    }
+    else if (x <= 10)
+    {
+        x *= 10;
+    }
+
+    return x;
+}
+
 int main()
 {
-	int numbersCount;
-	std::cout << "Enter the amount of numbers: ";
-	std::cin >> numbersCount;
+    int arr[1024];
 
-	int arrNum[1024];
+    int arrLen;
 
-	for (int i = 0; i < numbersCount; i++)
-	{
-		std::cin >> arrNum[i];
-	}
+    std::cout << "Enter array lenght: ";
+    std::cin >> arrLen;
 
-	for (int i = 0; i < numbersCount; i++)
-	{
-		if (arrNum[i] % 2 == 0)
-		{
-			arrNum[i] -= 1;
-		}
-		else if (arrNum[i] % 2 != 0)
-		{
-			arrNum[i] -= 3;
-		}
+    std::cout << "Enter elements: ";
+    for (size_t i = 0; i < arrLen; i++)
+    {
+        std::cin >> arr[i];
+    }
 
-		if (arrNum[i] > 10)
-		{
-			arrNum[i] %= 10;
-		}
-		else if (arrNum[i] <= 10)
-		{
-			arrNum[i] *= 10;
-		}
-	}
-
-	for (int i = 0; i < numbersCount; i++)
-	{
-		std::cout << arrNum[i] << std::endl;
-	}
+    for (size_t i = 0; i < arrLen; i++)
+    {
+        int currentNumber = number(arr[i]);
+        std::cout << currentNumber << " ";
+    }
 }

@@ -1,20 +1,44 @@
-// task06.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 
-int main()
+long long toBinary(int num)
 {
-    std::cout << "Hello World!\n";
+    long long res = 0;
+    long long acc = 1;
+    while (num != 0)
+    {
+        res += (num % 2) * acc;
+        acc *= 10;
+        num /= 2;
+    }
+    return res;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+int main() 
+{
+    int number;
+    std::cout << "Enter a number: ";
+    std::cin >> number;
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+    int copyOfNumber = number;
+
+    bool binary[32]; 
+    int acc = 0;
+
+    while (number > 0) 
+    {
+        binary[acc] = number % 2;  
+        number /= 2;  
+        acc++;
+    }
+
+    std::cout << "Binary representation: ";
+    for (int j = acc - 1; j >= 0; j--)
+    {
+        std::cout << binary[j];
+    }
+
+    std::cout << std::endl;
+
+    std::cout << "Binary representation with function: ";
+    std::cout << toBinary(copyOfNumber);
+}

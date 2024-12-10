@@ -1,29 +1,29 @@
-//Напишете програма, която приема цели числа в интервала[1, 100].
-//Нека в системния вход се въвеждат числа ДОКАТО не се въведе числото 0.
-//Тогава програмата трябва да ни изведе всички числа въведени четен брой пъти.Пример:
-
 #include <iostream>
 
 int main()
 {
-	const int n = 100;
+    int arrCount[101] = { 0 };
 
-	int arr[n];
+	int number;
 
-	int arrResult[n];
-
-	for (int i = 0; i < n; i++)
+	while (true)
 	{
-		for (int i = 0; i < n; i++)
+		std::cin >> number;
+
+		if (number == 0)
+			break;
+
+		if (number >= 1 && number <= 100)
 		{
-			std::cin >> arr[i];
-			if (arr[i] == 0)
-				break;
+			arrCount[number]++;
+		}
+	}
 
-			if (arr[i])
-			{
-
-			}
+	for (int i = 0; i <= 100; i++)
+	{
+		if (arrCount[i] % 2 == 0 && arrCount[i] > 0)
+		{
+			std::cout << i << " ";
 		}
 	}
 }

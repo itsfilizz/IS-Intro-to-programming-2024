@@ -1,36 +1,37 @@
-//Напишете програма, която приема 5 на брой цели числа в интервала[0, 9].
-//Нека в системния вход да се провери, 
-//след изпълнението на първата част, дали число е било вече въведено или не.Пример:
-
 #include <iostream>
 
 int main()
 {
-	int size = 5;
-	int number;
-
 	int arr[5];
 
-	std::cout << "Enter 5 numbers between [0,9]: ";
-	for (int i = 0; i < size; i++)
+	std::cout << "Enter 5 numbers between 0 and 9: ";
+
+	for (int i = 0; i < 5; i++)
 	{
 		std::cin >> arr[i];
-		if (arr[i] < 0 && arr[i] > 9)
-			break;
+		if (arr[i] > 9 || arr[i] < 0)
+			return -1;
 	}
 
-	std::cout << "Enter the number you want to find: ";
-	std::cin >> number;
+	int numberToSearch;
 
-	bool isFound = false;
+	std::cout << "Enter the number you want to search: ";
+	std::cin >> numberToSearch;
 
-	for (int i = 0; i < size; i++)
+	bool isFound = true;
+
+	for (int i = 0; i < 5; i++)
 	{
-		if (arr[i] == number)
-		{
-			isFound = true;
-		}
+		if (arr[i] != numberToSearch)
+			isFound == false;
 	}
 
-	std::cout << std::boolalpha << (isFound) ? "Found!" : "Not Found!";
+	if (isFound)
+	{
+		std::cout << "Found!";
+	}
+	else
+	{
+		std::cout << "Not found!";
+	}
 }
